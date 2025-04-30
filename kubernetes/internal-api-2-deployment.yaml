@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: internal-api-service-2
-        image: <your-docker-repo>/internal-api-service-2:latest
+        image: neeranuchj/internal-api-service-2:latest
         ports:
         - containerPort: 5002
         resources:

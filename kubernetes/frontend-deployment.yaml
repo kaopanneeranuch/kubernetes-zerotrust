@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: frontend-service
-        image: <your-docker-repo>/frontend-service:latest
+        image: neeranuchj/frontend-service:latest
         ports:
         - containerPort: 3000
         resources:
