@@ -1,0 +1,15 @@
+{
+  "name": "external-cloud-service",
+  "version": "1.0.0",
+  "description": "External Cloud Service for Zero Trust Demo",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1"
+  },
+  "author": "",
+  "license": "ISC"
+}

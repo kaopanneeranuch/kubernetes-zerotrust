@@ -1,0 +1,12 @@
+apiVersion: security.istio.io/v1beta1
+kind: RequestAuthentication
+metadata:
+  name: jwt-auth
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: frontend-service
+  jwtRules:
+  - issuer: "http://<keycloak-server>/realms/<your-realm>"
+    jwksUri: "http://<keycloak-server>/realms/<your-realm>/protocol/openid-connect/certs"
