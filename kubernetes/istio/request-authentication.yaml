@@ -8,5 +8,5 @@ spec:
     matchLabels:
       app: frontend-service
   jwtRules:
-  - issuer: "http://192.168.1.130:8080/realms/kubenetes-zerotrust"
-    jwksUri: "http://192.168.1.130:8080/realms/kubenetes-zerotrust/protocol/openid-connect/certs"
+  - issuer: "http://192.168.1.130:8080/realms/kubernetes-zerotrust"
+    jwksUri: "http://192.168.1.130:8080/realms/kubernetes-zerotrust/protocol/openid-connect/certs"
