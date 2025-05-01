@@ -8,5 +8,5 @@ spec:
     matchLabels:
       app: frontend-service
   jwtRules:
-  - issuer: "http://<keycloak-server>/realms/<your-realm>"
-    jwksUri: "http://<keycloak-server>/realms/<your-realm>/protocol/openid-connect/certs"
+  - issuer: "http://192.168.1.130:8080/realms/zerotrust-demo"
+    jwksUri: "http://192.168.1.130:8080/realms/zerotrust-demo/protocol/openid-connect/certs"
