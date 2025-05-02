@@ -1,0 +1,11 @@
+apiVersion: security.istio.io/v1beta1
+kind: RequestAuthentication
+metadata:
+  name: external-cloud-jwt
+spec:
+  selector:
+    matchLabels:
+      app: external-cloud-service
+  jwtRules:
+  - issuer: "http://192.168.1.130/realms/kubernetes-zerotrust"
+    jwksUri: "http://192.168.1.130/realms/kubernetes-zerotrust/protocol/openid-connect/certs"

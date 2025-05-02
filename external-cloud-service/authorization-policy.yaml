@@ -1,0 +1,15 @@
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: external-cloud-authz
+spec:
+  selector:
+    matchLabels:
+      app: external-cloud-service
+  action: ALLOW
+  rules:
+  - when:
+    - key: request.auth.claims[realm_access][roles]
+      any:
+      - "user"
+      - "admin"
