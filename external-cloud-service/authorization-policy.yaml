@@ -10,6 +10,6 @@ spec:
   rules:
   - when:
     - key: request.auth.claims[realm_access][roles]
-      any:
+      values:
       - "user"
       - "admin"
