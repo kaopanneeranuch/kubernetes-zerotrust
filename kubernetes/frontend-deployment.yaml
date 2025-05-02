@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: frontend-service
-        image: neeranuchj/frontend-service:latest
+        image: neeranuchj/kubernetes-zerotrust:frontend-service
         ports:
         - containerPort: 3000
         resources:
