@@ -1,0 +1,11 @@
+apiVersion: security.istio.io/v1beta1
+kind: RequestAuthentication
+metadata:
+  name: internal-api-2-authn
+spec:
+  selector:
+    matchLabels:
+      app: internal-api-service-2
+  jwtRules:
+  - issuer: "http://192.168.1.130:8080/realms/kubernetes-zerotrust"
+    jwksUri: "http://192.168.1.130:8080/realms/kubernetes-zerotrust/protocol/openid-connect/certs"
