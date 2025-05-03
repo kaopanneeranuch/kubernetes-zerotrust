@@ -9,3 +9,18 @@ spec:
   jwtRules:
   - issuer: "http://192.168.1.130:8080/realms/kubernetes-zerotrust"
     jwksUri: "http://192.168.1.130:8080/realms/kubernetes-zerotrust/protocol/openid-connect/certs"
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: external-cloud-2-authz
+spec:
+  selector:
+    matchLabels:
+      app: external-cloud-service-2
+  action: ALLOW
+  rules:
+  - when:
+    - key: request.auth.claims[realm_access][roles]
+      values:
+      - "admin"
