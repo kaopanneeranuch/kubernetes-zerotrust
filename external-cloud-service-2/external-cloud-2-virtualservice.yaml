@@ -10,7 +10,7 @@ spec:
   http:
   - match:
     - uri:
-        prefix: /api/external-data
+        prefix: /api/external-report
     route:
     - destination:
         host: external-cloud-service-2.default.svc.cluster.local
