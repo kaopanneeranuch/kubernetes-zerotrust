@@ -4,7 +4,7 @@ const app = express();
 const PORT = 3000;
 
 app.get('/api/external-report', (req, res) => {
-  res.json({ message: 'You accessed the SECURE REPORT in Cloud Service 2 (RBAC success).' });
+  res.json({ message: 'You accessed the SECURE REPORT in Cloud Service 2.' });
 });
 
 app.listen(PORT, () => {
