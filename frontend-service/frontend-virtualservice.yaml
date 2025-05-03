@@ -1,0 +1,18 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: frontend-service-vs
+spec:
+  gateways:
+  - istio-system/istio-ingressgateway
+  hosts:
+  - "*"
+  http:
+  - match:
+    - uri:
+        prefix: /frontend
+    route:
+    - destination:
+        host: frontend-service.default.svc.cluster.local
+        port:
+          number: 80

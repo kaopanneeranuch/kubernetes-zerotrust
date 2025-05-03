@@ -1,0 +1,18 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: internal-api-1-vs
+spec:
+  gateways:
+  - istio-system/istio-ingressgateway
+  hosts:
+  - "*"
+  http:
+  - match:
+    - uri:
+        prefix: /api/data
+    route:
+    - destination:
+        host: internal-api-service-1.default.svc.cluster.local
+        port:
+          number: 80
