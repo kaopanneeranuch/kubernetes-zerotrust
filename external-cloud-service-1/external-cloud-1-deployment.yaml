@@ -19,6 +19,13 @@ spec:
         image: neeranuchj/kubernetes-zerotrust:external-cloud-service-1
         ports:
         - containerPort: 3000
+        resources:
+          requests:
+            memory: "100Mi"
+            cpu: "100m"
+          limits:
+            memory: "250Mi"
+            cpu: "250m"
 ---
 apiVersion: v1
 kind: Service
