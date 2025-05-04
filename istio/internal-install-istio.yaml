@@ -5,10 +5,10 @@ metadata:
   namespace: istio-system
 spec:
   profile: default
-  meshConfig:
-    defaultConfig:
-      proxyMetadata:
-        ISTIO_META_CLUSTER_ID: internal-cluster
+  # meshConfig:
+  #   defaultConfig:
+  #     proxyMetadata:
+  #       ISTIO_META_CLUSTER_ID: internal-cluster
   values:
     global:
       multiCluster:
