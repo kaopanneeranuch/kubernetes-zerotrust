@@ -11,9 +11,6 @@ spec:
         ISTIO_META_CLUSTER_ID: internal-cluster
   values:
     global:
-      proxy:
-        init:
-          enabled: false
       multiCluster:
         clusterName: internal-cluster
       network: internal-network
