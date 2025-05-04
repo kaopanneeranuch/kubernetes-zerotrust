@@ -1,0 +1,23 @@
+apiVersion: install.istio.io/v1alpha1
+kind: IstioOperator
+metadata:
+  name: internal-cluster
+  namespace: istio-system
+spec:
+  profile: default
+  meshConfig:
+    defaultConfig:
+      proxyMetadata:
+        ISTIO_META_CLUSTER_ID: internal-cluster
+  values:
+    global:
+      proxy:
+        init:
+          enabled: false
+      multiCluster:
+        clusterName: internal-cluster
+      network: internal-network
+      meshID: mesh1
+  components:
+    cni:
+      enabled: true
