@@ -1,7 +1,7 @@
 const express = require('express');
 
 const app = express();
-const PORT = 3000;
+const PORT = 3001;
 
 app.get('/api/external-report', (req, res) => {
   res.json({ message: 'You accessed the SECURE REPORT in Cloud Service 2.' });

@@ -15,4 +15,4 @@ spec:
     - destination:
         host: external-cloud-service-1.default.svc.cluster.local
         port:
-          number: 80
+          number: 3000
