@@ -1,7 +1,7 @@
 apiVersion: install.istio.io/v1alpha1
 kind: IstioOperator
 metadata:
-  name: external-cluster
+  name: istio-installation
   namespace: istio-system
 spec:
   profile: default
@@ -15,12 +15,6 @@ spec:
         clusterName: external-cluster
       network: external-network
       meshID: mesh1
-    cni:
-      cniBinDir: /home/kubernetes/bin
-      cniConfDir: /etc/cni/net.d
-      excludeNamespaces:
-        - istio-system
-        - kube-system
   components:
     cni:
       enabled: true
