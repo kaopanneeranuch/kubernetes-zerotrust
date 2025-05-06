@@ -15,4 +15,4 @@ spec:
     - destination:
         host: external-cloud-service-2.default.svc.cluster.local
         port:
-          number: 3001
+          number: 80
