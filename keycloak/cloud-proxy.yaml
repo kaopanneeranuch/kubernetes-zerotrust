@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cloudsql-proxy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cloudsql-proxy
+  template:
+    metadata:
+      labels:
+        app: cloudsql-proxy
+    spec:
+      containers:
+        - name: cloudsql-proxy
+          image: gcr.io/cloudsql-docker/gce-proxy:latest
+          command: ["/cloud_sql_proxy", "-dir=/cloudsql", "-credential_file=/secrets/cloudsql/credentials.json"]
+          volumeMounts:
+            - name: cloudsql-credentials
+              mountPath: /secrets/cloudsql
+              readOnly: true
+      volumes:
+        - name: cloudsql-credentials
+          secret:
+            secretName: cloudsql-instance-credentials

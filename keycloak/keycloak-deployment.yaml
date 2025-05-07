@@ -16,18 +16,18 @@ spec:
     spec:
       containers:
       - name: keycloak
-        image: quay.io/keycloak/keycloak:latest 
+        image: quay.io/keycloak/keycloak:latest
         ports:
         - containerPort: 8080
         env:
         - name: DB_VENDOR
           value: POSTGRES
         - name: DB_ADDR
-          value: "<CLOUD_SQL_CONNECTION_NAME>"
+          value: "/cloudsql/kubernetes-zerotrust:us-central1-a:keycloak-cluster"
         - name: DB_DATABASE
           value: "keycloak"
         - name: DB_USER
-          value: "<DB_USER>"
+          value: "postgres"
         - name: DB_PASSWORD
           valueFrom:
             secretKeyRef:

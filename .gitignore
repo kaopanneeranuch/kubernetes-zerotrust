@@ -2,3 +2,4 @@
 /external-cloud-service-1/node_modules
 /external-cloud-service-2/node_modules
 /frontend-service/node_modules
+/keycloak/kubernetes-zerotrust-cloud-sql-client.json
