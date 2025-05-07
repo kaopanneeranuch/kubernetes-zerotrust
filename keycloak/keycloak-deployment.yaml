@@ -33,3 +33,16 @@ spec:
             secretKeyRef:
               name: keycloak-db-password
               key: password
+        - name: KC_HOSTNAME
+            value: "keycloak-cluster.neeranuchj.org"
+          - name: KC_PROXY_HEADERS
+            value: "xforwarded"
+          - name: KC_HTTP_ENABLED
+            value: "true"
+        resources:
+          requests:
+            memory: "512Mi"  # Request for memory
+            cpu: "500m"      # Request for CPU
+          limits:
+            memory: "1Gi"    # Limit for memory
+            cpu: "1"         # Limit for CPU

@@ -20,6 +20,13 @@ spec:
             - name: cloudsql-credentials
               mountPath: /secrets/cloudsql
               readOnly: true
+          resources:
+            requests:
+              memory: "256Mi"  # Request for memory
+              cpu: "250m"      # Request for CPU
+            limits:
+              memory: "512Mi"  # Limit for memory
+              cpu: "500m"      # Limit for CPU
       volumes:
         - name: cloudsql-credentials
           secret:
