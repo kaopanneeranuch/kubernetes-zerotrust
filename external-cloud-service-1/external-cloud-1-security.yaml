@@ -7,8 +7,8 @@ spec:
     matchLabels:
       app: external-cloud-service-1
   jwtRules:
-  - issuer: "http://192.168.1.130:8080/realms/kubernetes-zerotrust"
-    jwksUri: "http://192.168.1.130:8080/realms/kubernetes-zerotrust/protocol/openid-connect/certs"
+  - issuer: "https://keycloak.neeranuchj.org/realms/kubernetes-zerotrust"
+    jwksUri: "https://keycloak.neeranuchj.orgrealms/kubernetes-zerotrust/protocol/openid-connect/certs"
 ---
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
