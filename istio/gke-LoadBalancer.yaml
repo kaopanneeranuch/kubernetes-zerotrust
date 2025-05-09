@@ -4,7 +4,6 @@ metadata:
   name: istio-ingressgateway
   namespace: istio-system
   annotations:
-    # → Enable container-native Load Balancing (NEGs) on GKE:
     cloud.google.com/neg: '{"exposed_ports":{"80":{},"443":{}}}'
 spec:
   type: LoadBalancer
@@ -17,3 +16,4 @@ spec:
     - name: https
       port: 443
       targetPort: 443
+  externalTrafficPolicy: Cluster
