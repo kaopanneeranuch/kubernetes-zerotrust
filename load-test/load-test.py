@@ -4,13 +4,12 @@ import requests
 import matplotlib.pyplot as plt
 from datetime import datetime, timedelta
 
-# Function to run Apache Benchmark (`ab`) with concurrency and number of requests
 def run_ab_benchmark(url, token, concurrency, num_requests):
     ab_command = [
         'ab', 
-        '-c', str(concurrency),  # concurrency level
-        '-n', str(num_requests),  # total number of requests
-        '-H', f'Authorization: Bearer {token}',  # JWT token in header
+        '-c', str(concurrency),  
+        '-n', str(num_requests), 
+        '-H', f'Authorization: Bearer {token}',  
         url
     ]
     
@@ -56,12 +55,12 @@ def compare_performance(url1, url2, concurrency, num_requests, token):
 
         # Create a window for Requests per second
         fig1, ax1 = plt.subplots(figsize=(8, 6))
-        ax1.bar([0], result1['requests_per_second'], label='1 Gateway')
-        ax1.bar([1], result2['requests_per_second'], label='3 Gateways')
+        ax1.bar([0], result1['requests_per_second'], label='5 Max Pods')
+        ax1.bar([1], result2['requests_per_second'], label='10 Max Pods')
         ax1.set_title('Requests per second Comparison', fontsize=14)
         ax1.set_ylabel('Requests per second', fontsize=12)
         ax1.set_xticks([0, 1])
-        ax1.set_xticklabels(['1 Gateway', '3 Gateways'], fontsize=12)
+        ax1.set_xticklabels(['5 Max Pods', '10 Max Pods'], fontsize=12)
         ax1.legend()
 
         # Add value labels on top of bars
@@ -74,17 +73,17 @@ def compare_performance(url1, url2, concurrency, num_requests, token):
 
         # Create a window for Time per request
         fig2, ax2 = plt.subplots(figsize=(8, 6))
-        ax2.bar([0], result1['time_per_request'], label='1 Gateway')
-        ax2.bar([1], result2['time_per_request'], label='3 Gateways')
+        ax2.bar([0], result1['time_per_request'], label='5 Max Pods')
+        ax2.bar([1], result2['time_per_request'], label='10 Max Pods')
         ax2.set_title('Time per request Comparison', fontsize=14)
         ax2.set_ylabel('Time per request (ms)', fontsize=12)
         ax2.set_xticks([0, 1])
-        ax2.set_xticklabels(['1 Gateway', '3 Gateways'], fontsize=12)
+        ax2.set_xticklabels(['5 Max Pods', '10 Max Pods'], fontsize=12)
         ax2.legend()
 
         # Add value labels on top of bars
-        ax2.text(0, result1['time_per_request'] + 50, f'{result1["time_per_request"]:.2f}', ha='center', va='bottom')
-        ax2.text(1, result2['time_per_request'] + 50, f'{result2["time_per_request"]:.2f}', ha='center', va='bottom')
+        ax2.text(0, result1['time_per_request'] + 0.1, f'{result1["time_per_request"]:.2f}', ha='center', va='bottom')
+        ax2.text(1, result2['time_per_request'] + 0.1, f'{result2["time_per_request"]:.2f}', ha='center', va='bottom')
 
         # Adjust layout for better spacing
         # plt.tight_layout()
@@ -92,7 +91,7 @@ def compare_performance(url1, url2, concurrency, num_requests, token):
 
 # Main function
 def main():
-    service = 'external-cloud-service-1'
+    service = 'external-cloud-service-2'
 
     if service == 'internal-api-service-1':
         url1 = 'http://localhost:8888/api/data'
@@ -101,13 +100,13 @@ def main():
         url1 = 'http://localhost:8888/api/report'
         url2 = 'http://localhost:8889/api/report'
     elif service == 'external-cloud-service-1':
-        url1 = 'http://34.131.93.218/api/external-data'
-        url2 = 'http://35.244.51.99/api/external-data'
+        url1 = 'http://35.244.51.99/api/external-data'
+        url2 = 'http://34.131.93.218/api/external-data'
     elif service == 'external-cloud-service-2':
-        url1 = 'http://34.131.93.218/api/external-report'
-        url2 = 'http://35.244.51.99/api/external-report'
+        url1 = 'http://35.244.51.99/api/external-report'
+        url2 = 'http://34.131.93.218/api/external-report'
 
-    token = "your_jwt_token_here"  # Replace with your actual JWT token
+    token = "<keycloak-token>"  # Replace with your actual token
     concurrency = 100
     num_requests = 100
 
