@@ -9,7 +9,6 @@ spec:
   jwtRules:
   - issuer: "https://keycloak.neeranuchj.org/realms/kubernetes-zerotrust"
     jwksUri: "https://keycloak.neeranuchj.org/realms/kubernetes-zerotrust/protocol/openid-connect/certs"
-    forwardOriginalToken: true
 ---
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
