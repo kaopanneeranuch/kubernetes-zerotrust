@@ -1,0 +1,18 @@
+apiVersion: configuration.konghq.com/v1
+kind: KongPlugin
+metadata:
+  name: oidc-authz
+  namespace: normal
+plugin: openid-connect
+config:
+  # 1) Discovery endpoint for your Keycloak realm
+  discovery: "https://keycloak.neeranuchj.org/realms/kubernetes-zerotrust/.well-known/openid-configuration"
+  bearer_only: true
+  client_id: external-cloud-service-1
+  client_secret: "WnerQJChIFnfvL3XjbKAUzka22L7gqBV"
+  roles_required:
+    - user
+    - admin  
+  roles_claim:
+    - realm_access
+    - roles

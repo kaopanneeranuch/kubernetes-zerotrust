@@ -1,0 +1,18 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: external-cloud-service-1-vs
+spec:
+  gateways:
+  - istio-system/istio-ingressgateway
+  hosts:
+  - "*"
+  http:
+  - match:
+    - uri:
+        prefix: /api/external-data
+    route:
+    - destination:
+        host: external-cloud-service-1.default.svc.cluster.local
+        port:
+          number: 80
