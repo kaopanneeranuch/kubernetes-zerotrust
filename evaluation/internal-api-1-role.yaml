@@ -1,0 +1,28 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: proxy-internal-api-1
+  namespace: default         
+rules:
+  - apiGroups: [""]
+    resources: ["services/proxy"]
+    resourceNames: ["internal-api-service-1"]
+    verbs: ["get"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: proxy-internal-api-1-access
+  namespace: default
+subjects:
+  - kind: Group
+    name: "user"                
+    apiGroup: rbac.authorization.k8s.io
+  - kind: Group
+    name: "admin"             
+    apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: proxy-internal-api-1     # the Role you already created
+  apiGroup: rbac.authorization.k8s.io
+
