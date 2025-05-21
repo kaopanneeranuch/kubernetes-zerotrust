@@ -1,0 +1,10 @@
+apiVersion: authorization.k8s.io/v1
+kind: SelfSubjectAccessReview
+spec:
+  resourceAttributes:
+    namespace: default
+    verb: get
+    group: ""                        # core API group
+    resource: services
+    subresource: proxy
+    name: internal-api-service-1:80  # include the “:80” here
