@@ -55,12 +55,12 @@ def compare_performance(url1, url2, concurrency, num_requests, token):
 
         # Create a window for Requests per second
         fig1, ax1 = plt.subplots(figsize=(8, 6))
-        ax1.bar([0], result1['requests_per_second'], label='Service Mesh')
+        ax1.bar([0], result1['requests_per_second'], label='Service Mesh with mTLS')
         ax1.bar([1], result2['requests_per_second'], label='Kubernetes API Server')
         ax1.set_title('Requests per second Comparison', fontsize=14)
         ax1.set_ylabel('Requests per second', fontsize=12)
         ax1.set_xticks([0, 1])
-        ax1.set_xticklabels(['Service Mesh', 'Kubernetes API Server'], fontsize=12)
+        ax1.set_xticklabels(['Service Mesh with mTLS', 'Kubernetes API Server'], fontsize=12)
         ax1.legend()
 
         # Add value labels on top of bars
@@ -73,12 +73,12 @@ def compare_performance(url1, url2, concurrency, num_requests, token):
 
         # Create a window for Time per request
         fig2, ax2 = plt.subplots(figsize=(8, 6))
-        ax2.bar([0], result1['time_per_request'], label='Service Mesh')
+        ax2.bar([0], result1['time_per_request'], label='Service Mesh with mTLS')
         ax2.bar([1], result2['time_per_request'], label='Kubernetes API Server')
         ax2.set_title('Time per request Comparison', fontsize=14)
         ax2.set_ylabel('Time per request (ms)', fontsize=12)
         ax2.set_xticks([0, 1])
-        ax2.set_xticklabels(['Service Mesh', 'Kubernetes API Server'], fontsize=12)
+        ax2.set_xticklabels(['Service Mesh with mTLS', 'Kubernetes API Server'], fontsize=12)
         ax2.legend()
 
         # Add value labels on top of bars
@@ -106,10 +106,13 @@ def main():
         url1 = 'http://35.244.51.99/api/external-report'
         url2 = 'http://34.131.93.218/api/external-report'
     elif service == 'istio-kube_api_server':
-        url1 = 'http://localhost:8888/api/data'
+        url1 = 'http://localhost:8890/api/data'
         url2 = 'http://localhost:8889/api/v1/namespaces/default/services/internal-api-service-1:80/proxy/api/data'
+    elif service == 'istio-peer':
+        url1 = 'http://localhost:8888/api/data'
+        url2 = 'http://localhost:8890/api/data'
 
-    token = "<keycloak-token>"  # Replace with your actual token
+    token = "<keycloak-token>"
     concurrency = 500
     num_requests = 500
 
